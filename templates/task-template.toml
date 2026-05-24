@@ -1,0 +1,58 @@
+# Task Spec Template
+# Copy this file, rename to [task-name].toml, fill in all fields.
+# Tasks live in tasks/ and are shared across personas.
+# A task spec defines WHAT to do and WHEN — not WHO (that's the persona).
+
+[meta]
+name = "[kebab-case-task-name]"
+version = "0.1"
+status = "draft"                  # draft | active | deprecated
+owner = "[persona-name]"          # persona responsible for executing this task
+date = "[YYYY-MM]"
+
+[description]
+summary = "[One sentence: what does this task accomplish?]"
+trigger = "[What initiates this task? User request / schedule / event / another task output]"
+frequency = "[one-time | recurring | on-demand]"
+
+[inputs]
+# List inputs this task requires
+required = [
+  "[input-1: description]",
+  "[input-2: description]",
+]
+optional = [
+  "[input-3: description]",
+]
+
+[outputs]
+# List what this task produces and where it goes
+artifacts = [
+  "[output-1: file path or description]",
+]
+destination = "[folder path or external system]"
+
+[steps]
+# Ordered list of steps. Keep each step atomic.
+1 = "[Step description]"
+2 = "[Step description]"
+3 = "[Step description]"
+
+[capabilities]
+# Capabilities the executing persona must load for this task
+load = [
+  "capabilities/[capability-name].md",
+]
+
+[acceptance_criteria]
+# How do we know this task is done correctly?
+criteria = [
+  "[Criterion 1]",
+  "[Criterion 2]",
+]
+
+[constraints]
+# Hard rules that apply during this task
+rules = [
+  "[Rule 1]",
+]

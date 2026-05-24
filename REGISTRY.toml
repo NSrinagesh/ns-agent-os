@@ -1,0 +1,217 @@
+# agent-os Registry
+# Master catalog of all personas, capabilities, and base docs.
+# One entry per artifact. Update this file whenever a doc is
+# added, versioned, or deprecated.
+
+[meta]
+version = "0.1"
+last_updated = "2026-05"
+maintainer = "agent-architect"
+
+# ─────────────────────────────────────────
+# BASE DOCS
+# Loaded for every agent on every call.
+# Stable cache prefix — never add dynamic content.
+# Load order is enforced: 1 → 2 → 3 → 4
+# ─────────────────────────────────────────
+
+[[base]]
+order = 1
+name = "agent-design-standards"
+file = "base/agent-design-standards.md"
+description = "Behavioral standards for all agents — operating mode, decision authority, escalation, reasoning standards"
+version = "0.3"
+status = "draft"
+tags = ["behavior", "standards", "reasoning"]
+
+[[base]]
+order = 2
+name = "output-standards"
+file = "base/output-standards.md"
+description = "Output format, structured output rules, response discipline, prohibited content"
+version = "0.2"
+status = "draft"
+tags = ["output", "format", "standards"]
+
+[[base]]
+order = 3
+name = "mcp-integration-patterns"
+file = "base/mcp-integration-patterns.md"
+description = "Tool call principles, auth, error handling, logging, data classification, security constraints"
+version = "0.1"
+status = "draft"
+tags = ["mcp", "tools", "integration", "security"]
+
+[[base]]
+order = 4
+name = "context-management"
+file = "base/context-management.md"
+description = "Context loading, prompt caching, memory, RAG, session boundaries, context window discipline"
+version = "0.1"
+status = "draft"
+tags = ["context", "memory", "rag", "caching"]
+
+# ─────────────────────────────────────────
+# PERSONAS
+# One entry per agent role.
+# Loaded after base docs, before capability docs.
+# ─────────────────────────────────────────
+
+[[personas]]
+name = "full-stack-developer"
+file = "personas/full-stack-developer-persona.md"
+description = "Implements product features — frontend, backend, AI integration, testing, and PRs — within CTO standards and against Product Lead specs"
+version = "0.1"
+status = "draft"
+tags = ["engineering", "development", "implementation"]
+
+[[personas]]
+name = "product-lead"
+file = "personas/product-lead-persona.md"
+description = "Defines what gets built and why — product briefs, PRDs, user stories, acceptance criteria, prioritization, and user persona definition"
+version = "0.1"
+status = "draft"
+tags = ["product", "requirements", "strategy"]
+
+[[personas]]
+name = "cto"
+file = "personas/cto-persona.md"
+description = "Technical decision-maker — owns architecture, engineering standards, tech stack, code quality, AI system design, and technical risk management"
+version = "0.2"
+status = "draft"
+tags = ["engineering", "architecture", "standards", "ai"]
+
+[[personas]]
+name = "agent-architect"
+file = "personas/agent-architect-persona.md"
+description = "Meta-agent that designs, validates, and governs all agent-os artifacts — personas, capabilities, prompts, tasks, and grounding docs"
+version = "0.1"
+status = "draft"
+tags = ["meta", "governance", "agent-os"]
+
+# ─────────────────────────────────────────
+# CAPABILITIES
+# Loaded on demand, task-specific.
+# Maximum 2 simultaneously unless justified.
+# ─────────────────────────────────────────
+
+[[capabilities]]
+name = "ai-system-design"
+file = "capabilities/ai-system-design.md"
+description = "RAG architecture, model selection framework, prompt engineering standards, evaluation/evals, inference cost management, AI guardrails"
+version = "0.1"
+status = "draft"
+tags = ["ai", "llm", "rag", "evals", "architecture"]
+primary_consumer = "cto"
+
+[[capabilities]]
+name = "security-and-compliance"
+file = "capabilities/security-and-compliance.md"
+description = "PII handling, data classification, auth patterns, secrets management, OWASP LLM Top 10"
+version = "0.1"
+status = "draft"
+tags = ["security", "compliance", "pii", "auth"]
+primary_consumer = "cto"
+
+[[capabilities]]
+name = "api-design-standards"
+file = "capabilities/api-design-standards.md"
+description = "Contract-first API design, REST patterns, versioning, error handling standards"
+version = "0.1"
+status = "draft"
+tags = ["api", "rest", "design", "standards"]
+primary_consumer = "cto"
+
+[[capabilities]]
+name = "infrastructure-and-devops"
+file = "capabilities/infrastructure-and-devops.md"
+description = "GCP architecture patterns, IaC, CI/CD pipeline design, observability and monitoring standards, cost management"
+version = "0.1"
+status = "draft"
+tags = ["infrastructure", "devops", "cicd", "gcp", "observability"]
+primary_consumer = "cto"
+
+[[capabilities]]
+name = "frontend-engineering"
+file = "capabilities/frontend-engineering.md"
+description = "Next.js patterns, component architecture, state management, API integration from client, accessibility baseline, performance standards"
+version = "0.1"
+status = "draft"
+tags = ["frontend", "nextjs", "react", "ui"]
+primary_consumer = "cto"
+
+[[capabilities]]
+name = "requirements-gathering"
+file = "capabilities/requirements-gathering.md"
+description = "How to discover, structure, and validate requirements — user stories, acceptance criteria, dependency mapping, MoSCoW prioritization"
+version = "0.1"
+status = "draft"
+tags = ["requirements", "product", "stories"]
+primary_consumer = "product-lead"
+
+[[capabilities]]
+name = "external-artifact-migration"
+file = "capabilities/external-artifact-migration.md"
+description = "Evaluate, classify, refactor, and migrate external prompts, skills, or personas into agent-os. Produces a migration brief for operator review before any files are written."
+version = "0.1"
+status = "draft"
+tags = ["migration", "prompts", "governance", "agent-os"]
+primary_consumer = "agent-architect"
+
+[[capabilities]]
+name = "grounding-doc-management"
+file = "capabilities/grounding-doc-management.md"
+description = "How to create, load, update, version, and deprecate grounding docs. Governance rules, token budgets, overlap arbitration"
+version = "0.1"
+status = "draft"
+tags = ["knowledge-management", "governance", "agent-os"]
+primary_consumer = "agent-architect"
+
+# ─────────────────────────────────────────
+# PROMPTS / TEMPLATES
+# Reusable scaffolding for authoring new artifacts.
+# ─────────────────────────────────────────
+
+[[templates]]
+name = "session-startup-template"
+file = "templates/session-startup-template.md"
+description = "Starter template for authoring session startup files — load order, capability routing, kickoff prompt"
+version = "0.1"
+status = "active"
+tags = ["template", "session", "agent-os"]
+
+[[templates]]
+name = "persona-template"
+file = "templates/persona-template.md"
+description = "Starter template for authoring new persona specs — frontmatter, required sections, inline guidance"
+version = "0.1"
+status = "active"
+tags = ["template", "persona", "agent-os"]
+
+[[templates]]
+name = "capability-template"
+file = "templates/capability-template.md"
+description = "Starter template for authoring new capability docs — frontmatter, sections, token budget reminder"
+version = "0.1"
+status = "active"
+tags = ["template", "capability", "agent-os"]
+
+[[templates]]
+name = "task-template"
+file = "templates/task-template.toml"
+description = "Starter template for authoring new task specs — inputs, outputs, steps, acceptance criteria"
+version = "0.1"
+status = "active"
+tags = ["template", "task", "agent-os"]
+
+# ─────────────────────────────────────────
+# OPERATOR PROFILE
+# Loaded in active operator sessions only.
+# Never loaded in autonomous or agent-to-agent execution.
+# ─────────────────────────────────────────
+
+[operator]
+name = "nithin-operator"
+file = "nithin-operator.md"
+version = "0.3"
+status = "draft"
